@@ -1,0 +1,8 @@
+query get_notes($id: ID) {
+  customizations(name: "note", id: $id) {
+    results {
+      id
+      content: property(name: "content")
+    }
+  }
+}

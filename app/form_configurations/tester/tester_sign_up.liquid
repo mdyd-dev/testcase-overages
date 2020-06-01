@@ -1,0 +1,64 @@
+---
+name: tester_sign_up
+resource: User
+resource_owner: anyone
+redirect_to: /add_note
+configuration:
+  email:
+  password:
+  properties:
+    mobile_number:
+      validation:
+        presence: true
+        phone_number: true
+  first_name:
+    validation: { presence: true }
+  profiles:
+    tester:
+      enabled:
+        property_options:
+          default: true
+          readonly: true
+      validation:
+        presence: true
+    validation:
+      presence: true
+callback_actions: "{% execute_query 'user_session_create', email: @form.email, password: @form.password %}"
+---
+
+{% form %}
+  <div class="form-group">
+    <label for="first_name">First name</label>
+    <input name="{{ form_builder.fields.first_name.name }}" value="{{ form_builder.fields.first_name.value }}" class="form-control" id="first_name" type="text">
+      {% if form_builder.errors.first_name %}
+      <p>{{ form_builder.errors.first_name }}</p>
+  {% endif %}  </div>
+
+  <div class="form-group">
+    <label for="pwd">Email</label>
+    <input name="{{ form_builder.fields.email.name }}" value="{{ form_builder.fields.email.value }}" class="form-control" id="email" type="email">
+    {% if form_builder.errors.password %}
+      <p>{{ form_builder.errors.password }}</p>
+    {% endif %}
+  </div>
+
+  <div class="form-group">
+    <label for="pwd">Password</label>
+    <input name="{{ form_builder.fields.password.name }}" class="form-control" id="password" type="password">
+    {% if form_builder.errors.password %}
+      <p>{{ form_builder.errors.password }}</p>
+    {% endif %}
+  </div>
+
+  <div class="form-group">
+    <label for="pwd">Phone number</label>
+    <input name="{{ form.fields.mobile_number.name }}" value="{{ form.fields.mobile_number.value }}" class="form-control" id="mobile_number" type="text">
+    {% if form.errors.mobile_number %}
+      <p>{{ form.errors.mobile_number }}</p>
+    {% endif %}
+  </div>
+
+  <input value="{{ form_builder.fields.profiles.tester.enabled.value }}" name="{{ form_builder.fields.profiles.tester.enabled.name }}" type="hidden">
+
+  <button type="submit" class="btn btn-primary">Create</button>
+{% endform %}

@@ -1,0 +1,11 @@
+{
+  current_user {
+    id
+    slug
+    first_name
+    email
+    tester_profile: profile(profile_type: "tester") {
+      id
+    }
+  }
+}

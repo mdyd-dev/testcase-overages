@@ -1,0 +1,7 @@
+---
+slug: details
+---
+{%- assign id = context.params.slug2 -%}
+{%- query_graph "get_notes", result_name: "g", id: id -%}
+
+{% include 'note/show' note: g.customizations.results.first %}

@@ -1,0 +1,15 @@
+---
+name: note_form
+resource: Customization
+redirect_to: /add_note
+resource_owner: anyone
+configuration:
+  properties:
+    content:
+      validation: { presence: false }
+email_notifications:
+- testcase_notification
+api_call_notifications:
+- slack_notification
+---
+{% include 'note/create' %}

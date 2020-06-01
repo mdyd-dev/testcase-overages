@@ -1,0 +1,9 @@
+{% form html-data-form: "create" %}
+  {% assign p = form_builder.fields.properties %}
+<div class="form-group">
+  <label for="comment">Test Note:</label>
+  <textarea class="form-control" rows="5" id="comment" type='text' name='{{ p.content.name }}'>{{p.content.value}}</textarea><p></p>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+{% endform %}

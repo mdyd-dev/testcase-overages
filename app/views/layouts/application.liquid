@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="shortcut icon" type="image/x-icon" href="{{ 'favicon.ico' | asset_url }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha256-eSi1q2PG6J7g7ib17yAaWMcrr5GrtohYChqibrV7PBE=" crossorigin="anonymous" />
+</head>
+
+<body>
+  <div class="{% if page.metadata.full_width %}container-fluid{% else %}container{% endif %}">
+  <header class="my-3 py-3 border-bottom border-secondary">
+  {% include 'header' %}
+  <div class="row">
+    <div class="col">
+      <a href="/" title="Go to home page">🏠</a> Test Note
+    </div>
+    <div class="col text-right">
+    {% if context.current_user.id %}
+        You are login as: {{ context.current_user.email }}
+        <br>
+        {% include_form 'log_out' %}
+      {% else %}
+        <a href="/tester/sign-up">Sign up</a>
+        |
+        <a href="/sign-in">Log in</a>
+      {% endif %}
+    </div>
+  </div>
+</header>
+    <main>
+      {% include 'flash-messages' %}
+      
+      {{ content_for_layout }}
+    </main>
+
+    <footer class="my-3 py-3 border-top border-secondary">
+      <p>platformOS</p>
+    </footer>
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</body>
+</html>
+

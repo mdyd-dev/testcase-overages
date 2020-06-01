@@ -1,0 +1,4 @@
+name: note
+custom_attributes:
+- name: content
+  attribute_type: text

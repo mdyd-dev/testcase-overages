@@ -1,0 +1,14 @@
+query note($per_page: Int = 10) {
+  customizations(
+    name: "note"
+    per_page: $per_page
+    sort: { name: "created_at", order: "desc" }
+  ) {
+    results {
+      id
+      created_at
+      updated_at
+      content: property(name: "content")
+    }
+  }
+}

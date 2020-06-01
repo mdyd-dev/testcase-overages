@@ -1,0 +1,5 @@
+---
+name: only_allowed_by_admin
+---
+{% query_graph 'current_user', result_name: 'g' %}
+{% if g.current_user.first_name == 'admin' %}true{% endif %}

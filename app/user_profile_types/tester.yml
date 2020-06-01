@@ -1,0 +1,4 @@
+name: tester
+custom_attributes:
+- name: bio
+  attribute_type: string
